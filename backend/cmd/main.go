@@ -24,11 +24,11 @@ func serveWs(hub *websocket_client.Hub, w http.ResponseWriter, r *http.Request) 
 		return
 	}
 	client := &websocket_client.Client{
-		Hub:  hub,                    // Note the capital H
-		Conn: conn,                   // Note the capital C
-		Send: make(chan []byte, 256), // Note the capital S
+		Hub:  hub,                    
+		Conn: conn,                   
+		Send: make(chan []byte, 256), 
 	}
-	hub.Register <- client // Note the capital H
+	hub.Register <- client 
 
 	go client.WritePump()
 	go client.ReadPump()
